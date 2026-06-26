@@ -83,9 +83,17 @@ ul { list-style: none; }
   height: 72px;
   width: auto;
   filter: brightness(0) invert(1);
-  transition: opacity var(--transition);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
 }
-.nav-logo:hover { opacity: 0.85; }
+#navbar.logo-visible .nav-logo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+#navbar.logo-visible .nav-logo:hover { opacity: 0.85; }
 .nav-links {
   display: flex;
   align-items: center;
