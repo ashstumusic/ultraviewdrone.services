@@ -28,6 +28,17 @@ img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
+/* ===== CAMO UTILITY ===== */
+.camo-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 400px;
+  background-repeat: repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 /* ===== NAVIGATION ===== */
 #navbar {
   position: fixed;
@@ -38,7 +49,20 @@ ul { list-style: none; }
   border-bottom: 2px solid var(--bark);
   transition: padding var(--transition), box-shadow var(--transition);
   padding: 0 2rem;
+  overflow: hidden;
 }
+#navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 300px;
+  background-repeat: repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+.nav-inner { position: relative; z-index: 1; }
 #navbar.scrolled {
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
@@ -127,10 +151,19 @@ ul { list-style: none; }
   background-position: center top;
   filter: brightness(0.35);
 }
+.hero-camo {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 500px;
+  background-repeat: repeat;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+}
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10,5,2,0.5) 0%, rgba(10,5,2,0.7) 100%);
+  background: linear-gradient(to bottom, rgba(10,5,2,0.55) 0%, rgba(10,5,2,0.75) 100%);
 }
 .hero-content {
   position: relative;
@@ -404,23 +437,13 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 40px,
-      rgba(201,169,110,0.04) 40px,
-      rgba(201,169,110,0.04) 41px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 60px,
-      rgba(201,169,110,0.03) 60px,
-      rgba(201,169,110,0.03) 61px
-    );
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 450px;
+  background-repeat: repeat;
+  opacity: 0.1;
+  pointer-events: none;
 }
-#mission .section-inner { position: relative; }
+#mission .section-inner { position: relative; z-index: 1; }
 .mission-statement {
   font-size: 1.2rem;
   font-style: italic;
@@ -518,7 +541,20 @@ ul { list-style: none; }
   background: #110b07;
   border-top: 3px solid var(--bark);
   padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
+#footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 350px;
+  background-repeat: repeat;
+  opacity: 0.09;
+  pointer-events: none;
+}
+.footer-inner { position: relative; z-index: 1; }
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
