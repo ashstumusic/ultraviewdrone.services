@@ -11,7 +11,7 @@
   --font-heading: 'Oswald', sans-serif;
   --font-body:    'Lato', sans-serif;
 
-  --nav-h: 70px;
+  --nav-h: 88px;
   --transition: 0.3s ease;
 }
 
@@ -80,7 +80,7 @@ ul { list-style: none; }
   align-items: center;
 }
 .nav-logo {
-  height: 52px;
+  height: 72px;
   width: auto;
   filter: brightness(0) invert(1);
   transition: opacity var(--transition);
@@ -173,7 +173,7 @@ ul { list-style: none; }
   max-width: 800px;
 }
 .hero-logo {
-  width: min(300px, 60vw);
+  width: min(420px, 75vw);
   margin: 0 auto 1.8rem;
   filter: brightness(0) invert(1) drop-shadow(0 4px 18px rgba(201,169,110,0.35));
 }
