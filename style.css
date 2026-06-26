@@ -173,10 +173,9 @@ ul { list-style: none; }
   max-width: 800px;
 }
 .hero-logo {
-  width: min(220px, 50vw);
-  margin: 0 auto 1.5rem;
-  filter: brightness(0) invert(1);
-  drop-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  width: min(300px, 60vw);
+  margin: 0 auto 1.8rem;
+  filter: brightness(0) invert(1) drop-shadow(0 4px 18px rgba(201,169,110,0.35));
 }
 .hero-eyebrow {
   font-family: var(--font-heading);
@@ -213,6 +212,92 @@ ul { list-style: none; }
   margin: 0 auto 2.5rem;
   line-height: 1.7;
 }
+
+/* ===== HUD / DRONE-VISION EFFECT ===== */
+.hud {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Corner brackets */
+.hud-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+.hud-corner.tl { top: 90px; left: 24px; border-top: 2px solid var(--tan); border-left: 2px solid var(--tan); }
+.hud-corner.tr { top: 90px; right: 24px; border-top: 2px solid var(--tan); border-right: 2px solid var(--tan); }
+.hud-corner.bl { bottom: 24px; left: 24px; border-bottom: 2px solid var(--tan); border-left: 2px solid var(--tan); }
+.hud-corner.br { bottom: 24px; right: 24px; border-bottom: 2px solid var(--tan); border-right: 2px solid var(--tan); }
+
+/* Scan line */
+.hud-scan {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--sage) 30%, rgba(201,169,110,0.9) 50%, var(--sage) 70%, transparent 100%);
+  box-shadow: 0 0 12px 3px rgba(122,140,110,0.4);
+  animation: scan 5s linear infinite;
+  top: 0;
+}
+@keyframes scan {
+  0%   { top: 10%; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 90%; opacity: 0; }
+}
+
+/* Reticle */
+.hud-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+}
+.reticle-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--tan);
+  animation: pulse-ring 3s ease-out infinite;
+}
+.reticle-ring.r2 { animation-delay: 1.5s; }
+@keyframes pulse-ring {
+  0%   { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.reticle-cross {
+  position: absolute;
+  inset: 0;
+}
+.reticle-cross::before,
+.reticle-cross::after {
+  content: '';
+  position: absolute;
+  background: var(--tan);
+  opacity: 0.5;
+}
+.reticle-cross::before { top: 50%; left: 10%; right: 10%; height: 1px; transform: translateY(-50%); }
+.reticle-cross::after  { left: 50%; top: 10%; bottom: 10%; width: 1px; transform: translateX(-50%); }
+
+/* HUD labels */
+.hud-label {
+  position: absolute;
+  font-family: 'Oswald', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  opacity: 0.7;
+}
+.hud-label.tl-label { top: 96px; left: 70px; }
+.hud-label.tr-label { top: 96px; right: 70px; }
+.hud-label.bl-label { bottom: 30px; left: 70px; }
+.hud-label.br-label { bottom: 30px; right: 70px; }
 
 /* Drone SVG */
 .hero-drone {
@@ -615,6 +700,7 @@ ul { list-style: none; }
 }
 
 @media (max-width: 680px) {
+  .hud-label, .hud-corner { display: none; }
   .hamburger { display: flex; }
   .nav-links {
     display: none;
