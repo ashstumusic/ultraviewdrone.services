@@ -42,10 +42,23 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background: var(--bg) url('images/HIGHRES50.jpg') repeat;
+  background-size: 320px;
   color: var(--text);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.82);
+  z-index: 0;
+  pointer-events: none;
+}
+#navbar, #hero, #pricing, #pilot, #mission, #equipment, #footer {
+  position: relative;
+  z-index: 1;
 }
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
@@ -75,7 +88,7 @@ ul { list-style: none; }
   background-image: url('images/HIGHRES50.jpg');
   background-size: 300px;
   background-repeat: repeat;
-  opacity: 0.04;
+  opacity: 0.18;
   pointer-events: none;
   z-index: 0;
 }
@@ -179,10 +192,10 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   background-image: url('images/HIGHRES50.jpg');
-  background-size: 500px;
+  background-size: 400px;
   background-repeat: repeat;
-  opacity: 0.09;
-  mix-blend-mode: multiply;
+  opacity: 0.28;
+  mix-blend-mode: overlay;
 }
 .hero-overlay {
   position: absolute;
@@ -370,7 +383,20 @@ ul { list-style: none; }
 #pricing {
   background: var(--bg);
   border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
 }
+#pricing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 320px;
+  background-repeat: repeat;
+  opacity: 0.16;
+  pointer-events: none;
+}
+#pricing .section-inner { position: relative; z-index: 1; }
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -442,7 +468,20 @@ ul { list-style: none; }
 #pilot {
   background: var(--bg);
   border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
 }
+#pilot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 380px;
+  background-repeat: repeat;
+  opacity: 0.14;
+  pointer-events: none;
+}
+.pilot-inner { position: relative; z-index: 1; }
 .pilot-inner {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -508,9 +547,9 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   background-image: url('images/HIGHRES50.jpg');
-  background-size: 450px;
+  background-size: 350px;
   background-repeat: repeat;
-  opacity: 0.04;
+  opacity: 0.20;
   pointer-events: none;
 }
 #mission .section-inner { position: relative; z-index: 1; }
@@ -567,7 +606,20 @@ ul { list-style: none; }
 #equipment {
   background: var(--bg);
   border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
 }
+#equipment::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/HIGHRES50.jpg');
+  background-size: 360px;
+  background-repeat: repeat;
+  opacity: 0.16;
+  pointer-events: none;
+}
+#equipment .section-inner { position: relative; z-index: 1; }
 .equipment-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -632,7 +684,7 @@ ul { list-style: none; }
   background-image: url('images/HIGHRES50.jpg');
   background-size: 350px;
   background-repeat: repeat;
-  opacity: 0.04;
+  opacity: 0.22;
   pointer-events: none;
 }
 .footer-inner {
